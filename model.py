@@ -5,7 +5,7 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.callbacks import TensorBoard
 from tensorflow.keras.layers import Dropout, Dense, BatchNormalization, CuDNNLSTM
 
-EPOCHS = 10
+EPOCHS = 50
 BATCH_SIZE = 64
 RATIO_TO_PREDICT = 'ETH-USD'
 NAME = f"LSTM model predicts {RATIO_TO_PREDICT} prices-{int(time.time())}"
@@ -50,5 +50,4 @@ model.compile(loss='sparse_categorical_crossentropy',
 history = model.fit(train_x, train_y,
                     batch_size=BATCH_SIZE,
                     epochs=EPOCHS,
-                    validation_data=(validation_x, validation_y),
-                    callbacks=[tensorboard])
+                    validation_data=(validation_x, validation_y))
