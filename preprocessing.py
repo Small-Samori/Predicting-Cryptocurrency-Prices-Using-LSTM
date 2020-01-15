@@ -27,7 +27,7 @@ main_df['future'] = main_df[f"{RATIO_TO_PREDICT}_close"].shift(-FUTURE_PERIOD_PR
 main_df['target'] = list(map(classify, main_df[f"{RATIO_TO_PREDICT}_close"], main_df['future']))
 
 times = sorted(main_df.index.values)
-last_5pct = times[-int(0.05 * len(times))]
+last_5pct = times[-int(0.15 * len(times))]
 
 validation_df = main_df[(main_df.index >= last_5pct)]
 main_df = main_df[(main_df.index < last_5pct)]
